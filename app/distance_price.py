@@ -1,19 +1,23 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def distance_price(dataframe: pd.DataFrame) -> None:
-    Bus_price_200 = dataframe.loc[dataframe['Cities_distance'] <= 200]
-    print("Average Bus price for 200 km travel: ", round(Bus_price_200["price_in_cents"].mean(),2), " cents")
-    print("Minimum Bus price for 200 km travel: ", Bus_price_200["price_in_cents"].min(), " cents")
-    print("Maximum Bus price for 200 km travel: ", Bus_price_200["price_in_cents"].max(), " cents")
+    print("Bus travel distance less than 200: ")
+    Bus_price_200 = dataframe.loc[dataframe['cities_distance'] <= 200]
+    print("Average price is %.2f cents for %.2f hours travel" % (Bus_price_200["price_in_cents"].mean(), Bus_price_200["travel_time"].mean()))
+    print("Minimun price is %.2f cents for %.2f hours travel" % (Bus_price_200["price_in_cents"].min(), Bus_price_200["travel_time"].min()))
+    print("Maximum price is %.2f cents for %.2f hours travel" % (Bus_price_200["price_in_cents"].max(), Bus_price_200["travel_time"].max()))
     print("\n")
 
-    Bus_price_800 = dataframe[(dataframe.Cities_distance >= 201) | (dataframe.Cities_distance <= 800)]
-    print("Average Bus price for 201-800 km travel: ", round(Bus_price_800["price_in_cents"].mean(),2), " cents")
-    print("Minimum Bus price for 201-800 km travel: ", Bus_price_800["price_in_cents"].min(), " cents")
-    print("Maximum Bus price for 201-800 km travel: ", Bus_price_800["price_in_cents"].max(), " cents")
+    print("Bus travel distance between 201 - 800: ")
+    Bus_price_800 = dataframe[(dataframe.cities_distance >= 201) | (dataframe.cities_distance <= 800)]
+    print("Average price is %.2f cents for %.2f hours travel" % (Bus_price_800["price_in_cents"].mean(), Bus_price_800["travel_time"].mean()))
+    print("Minimun price is %.2f cents for %.2f hours travel" % (Bus_price_800["price_in_cents"].min(), Bus_price_800["travel_time"].min()))
+    print("Maximum price is %.2f cents for %.2f hours travel" % (Bus_price_800["price_in_cents"].max(), Bus_price_800["travel_time"].max()))
     print("\n")
 
-    Bus_price_2000 = dataframe[(dataframe.Cities_distance >= 801) | (dataframe.Cities_distance <= 2000)]
-    print("Average Bus price for 801-2000 km travel: ", round(Bus_price_2000["price_in_cents"].mean(),2), " cents")
-    print("Minimum Bus price for 801-2000 km travel: ", Bus_price_2000["price_in_cents"].min(), " cents")
-    print("Maximum Bus price for 801-2000 km travel: ", Bus_price_2000["price_in_cents"].max(), " cents")
+    print("Bus travel distance more than 801: ")
+    Bus_price_2000 = dataframe[dataframe.cities_distance >= 801]
+    print("Average price is %.2f cents for %.2f hours travel" % (Bus_price_2000["price_in_cents"].mean(), Bus_price_2000["travel_time"].mean()))
+    print("Minimun price is %.2f cents for %.2f hours travel" % (Bus_price_2000["price_in_cents"].min(), Bus_price_2000["travel_time"].min()))
+    print("Maximum price is %.2f cents for %.2f hours travel" % (Bus_price_2000["price_in_cents"].max(), Bus_price_2000["travel_time"].max()))
